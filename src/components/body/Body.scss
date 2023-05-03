@@ -1,8 +1,50 @@
 .container__body {
-      max-width: 540px;
+      min-width: 540px;
 
       .body__balance {
-            height: 125px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
 
+            padding: 0 2rem;
+
+            width: 100%;
+            height: 125px;
+            border-radius: 10px;
+
+            background-color: hsl(10, 79%, 65%);
+            color: #fff;
+
+
+            .balance__circles {
+                  position: relative;
+                  width: 72px;
+                  height: 100%;
+
+                  .circles__circleBorder {
+                        position: absolute;
+                        width: 48px;
+                        height: 48px;
+                        top: 39px;
+                        right: 42px;
+                        z-index: 1;
+      
+                        border-radius: 50%;
+                        border: 1px solid #fff;
+                  }
+      
+                  .circles__circleFull {
+                        position: absolute;
+                        width: 48px;
+                        height: 48px;
+                        top: 39px;
+                        right: 22px;
+
+      
+                        background-color: #000;
+                        border-radius: 50%;
+                  }
+            }
       }
 }

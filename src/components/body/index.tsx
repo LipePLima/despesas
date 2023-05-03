@@ -6,10 +6,15 @@ const Body = () => {
             <Fragment>
                   <section className="container__body">
                         <div className="body__balance">
-                              <h1>Meus gastos</h1>
-                              <p>R$ 499,00</p>
-                              <div></div>
-                              <div></div>
+                              <div>
+                                    <h1>Meus gastos</h1>
+                                    <p>R$ 499,00</p>
+                              </div>
+                              <div className='balance__circles'>
+                                    <div className='circles__circleBorder'></div>
+                                    <div className='circles__circleFull'></div>
+
+                              </div>
                         </div>
                         <div className="body__dashboard">
                               <p>Gastos - Últimos 7 dias</p>

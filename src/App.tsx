@@ -1,3 +1,4 @@
+import "./App.scss"
 import Body from './components/body';
 
 function App() {
