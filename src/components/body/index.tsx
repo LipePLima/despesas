@@ -1,26 +1,61 @@
 import './Body.scss'
-import { Fragment } from "react";
 
 const Body = () => {
       return (
-            <Fragment>
-                  <section className="container__body">
-                        <div className="body__balance">
-                              <div className='balance__info'>
-                                    <h1>Meus gastos</h1>
-                                    <p>R$ 499,00</p>
+            <section className="container__body">
+                  <div className="body__balance">
+                        <div className='balance__info'>
+                              <h1>Meus gastos</h1>
+                              <p>R$ 499,00</p>
+                        </div>
+                        <div className='balance__circles'>
+                              <div className='circles__circleBorder'></div>
+                              <div className='circles__circleFull'></div>
+                        </div>
+                  </div>
+                  <div className="body__dashboard">
+                        <p className='dashboard__title'>Gastos - Últimos 7 dias</p>
+                        <div className='dashboard__graphics'>
+                              <div className='dashboard__graphic'>
+                                    <div className='graphic__info'></div>
+                                    <p>Dom</p>
                               </div>
-                              <div className='balance__circles'>
-                                    <div className='circles__circleBorder'></div>
-                                    <div className='circles__circleFull'></div>
-
+                              <div className='dashboard__graphic'>
+                                    <div className='graphic__info'></div>
+                                    <p>Seg</p>
+                              </div>
+                              <div className='dashboard__graphic'>
+                                    <div className='graphic__info'></div>
+                                    <p>Ter</p>
+                              </div>
+                              <div className='dashboard__graphic'>
+                                    <div className='graphic__info'></div>
+                                    <p>Qua</p>
+                              </div>
+                              <div className='dashboard__graphic'>
+                                    <div className='graphic__info'></div>
+                                    <p>Qui</p>
+                              </div>
+                              <div className='dashboard__graphic'>
+                                    <div className='graphic__info'></div>
+                                    <p>Sex</p>
+                              </div>
+                              <div className='dashboard__graphic'>
+                                    <div className='graphic__info'></div>
+                                    <p>Sab</p>
                               </div>
                         </div>
-                        <div className="body__dashboard">
-                              <p>Gastos - Últimos 7 dias</p>
+                        <hr />
+                        <p>Total este mês</p>
+                        <div>
+                              <p>R$ 478,33</p>
+                              <div>
+                                    <p>+2.4%</p>
+                                    <p>Relação com o último mês</p>
+                              </div>
                         </div>
-                  </section>
-            </Fragment>
+                  </div>
+            </section>
       )
 }
 
