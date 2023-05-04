@@ -46,12 +46,12 @@ const Body = () => {
                               </div>
                         </div>
                         <hr />
-                        <p>Total este mês</p>
-                        <div>
-                              <p>R$ 478,33</p>
-                              <div>
-                                    <p>+2.4%</p>
-                                    <p>Relação com o último mês</p>
+                        <p className='total__title'>Total este mês</p>
+                        <div className='container__total'>
+                              <p className='total__amount'>R$ 478,33</p>
+                              <div className='total__comparison'>
+                                    <p className='total__percent'>+2.4%</p>
+                                    <p className='total__lastMonth'>Relação com o último mês</p>
                               </div>
                         </div>
                   </div>
