@@ -1,0 +1,59 @@
+@import url("../body/Body.scss");
+
+.body__balance {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     align-items: center;
+
+     padding: 0 2rem;
+     width: 100%;
+     height: 7.813rem;
+     border-radius: 10px;
+
+     background-color: hsl(10, 79%, 65%);
+     color: #fff;
+
+     .balance__info {
+           h1 {
+                 font-weight: 500;
+                 margin-bottom: 1rem;
+           }
+
+           p {
+                 font-size: 32px;
+                 font-weight: 700;
+           }
+     }
+
+     .balance__circles {
+           position: relative;
+           width: 4.5rem;
+           height: 100%;
+
+           $circle__size: 3rem;
+           $circle__radius: 50%;
+           .circles__circleBorder {
+                 position: absolute;
+                 width: $circle__size;
+                 height: $circle__size;
+                 top: 39px;
+                 right: 42px;
+                 z-index: 1;
+
+                 border-radius: $circle__radius;
+                 border: 1px solid #fff;
+           }
+
+           .circles__circleFull {
+                 position: absolute;
+                 width: $circle__size;
+                 height: $circle__size;
+                 top: 39px;
+                 right: 22px;
+
+                 background-color: #000;
+                 border-radius: $circle__radius;
+           }
+     }
+}
