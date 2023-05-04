@@ -16,6 +16,21 @@
             background-color: hsl(10, 79%, 65%);
             color: #fff;
 
+            .balance__info {
+                  h1 {
+                        font-weight: 500;
+                        margin-bottom: 1rem;
+
+                  }
+
+                  p {
+                        font-size: 28px;
+                        font-weight: 600;
+                  }
+            }
+
+
+
 
             .balance__circles {
                   position: relative;

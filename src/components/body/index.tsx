@@ -6,7 +6,7 @@ const Body = () => {
             <Fragment>
                   <section className="container__body">
                         <div className="body__balance">
-                              <div>
+                              <div className='balance__info'>
                                     <h1>Meus gastos</h1>
                                     <p>R$ 499,00</p>
                               </div>
