@@ -32,12 +32,17 @@
 
                  .graphic__info {
                        width: 100%;
-                       height: 80px;
                        border-radius: 10px;
                  }
 
                  .graphic__info:hover {
-                       background-color: hsl(10, 79%, 78%);
+                        @if background-color == hsl(186, 34%, 60%) {
+                              background-color: hsl(27, 66%, 92%);
+
+                        } @else {
+                              background-color: hsl(10, 79%, 78%);
+
+                        }
                  }
 
                  p {

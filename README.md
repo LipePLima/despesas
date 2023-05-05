@@ -25,7 +25,7 @@
 *Funcionalidades*
 
   - [x] Alterar cor da barra refente ao dia atual;
-  - [ ]
+  - [x] Diferentes alturas para cada dia de acordo com a configuração no arquivo JSON;
 
 
 ## Tecnologias

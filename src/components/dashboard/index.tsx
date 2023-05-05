@@ -28,7 +28,12 @@ const Dashboard = ({ day }: DashboardProps) => {
 
                          return (
 <                             div className='dashboard__graphic' key={index}>
-                                   <div className='graphic__info' style={{ backgroundColor: color }}></div>
+                                   <div className='graphic__info' 
+                                   style={{ 
+                                        backgroundColor: color, 
+                                        height: `${api[index].amount}px`}}>
+
+                                   </div>
                                    <p>{ _day }</p>
                               </div>
                          )
