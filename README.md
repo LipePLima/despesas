@@ -24,7 +24,7 @@
 
 *Funcionalidades*
 
-  - [ ] Alterar cor da barra refente ao dia atual;
+  - [x] Alterar cor da barra refente ao dia atual;
   - [ ]
 
 
