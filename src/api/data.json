@@ -1,0 +1,30 @@
+[
+  {
+    "day": "Seg",
+    "amount": 50
+  },
+  {
+    "day": "Ter",
+    "amount": 100
+  },
+  {
+    "day": "Qua",
+    "amount": 150
+  },
+  {
+    "day": "Qui",
+    "amount": 89
+  },
+  {
+    "day": "Sex",
+    "amount": 67
+  },
+  {
+    "day": "Sab",
+    "amount": 124
+  },
+  {
+    "day": "Dom",
+    "amount": 73
+  }
+]

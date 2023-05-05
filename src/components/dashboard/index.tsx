@@ -1,42 +1,38 @@
 import "./Dashboard.scss"
+import api from "../../api/data.json"
 
-const Dashboard = (props: { day: number }) => {
-     const dayGraphic = document.getElementById(`${props.day}`) as HTMLElement;
-     console.log(dayGraphic)
+type DashboardProps = {
+     day: number
+}
+
+const Dashboard = ({ day }: DashboardProps) => {
+     const days: string[] =  [
+          "Dom",
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex",
+          "Sab"
+     ]
 
      
      return (
           <div className="body__dashboard">
                <p className='dashboard__title'>Gastos - Últimos 7 dias</p>
                <div className='dashboard__graphics'>
-                    <div className='dashboard__graphic'>
-                              <div className='graphic__info' id="0"></div>
-                              <p>Dom</p>
-                    </div>
-                    <div className='dashboard__graphic'>
-                              <div className='graphic__info' id="1"></div>
-                              <p>Seg</p>
-                    </div>
-                    <div className='dashboard__graphic'>
-                              <div className='graphic__info' id="2"></div>
-                              <p>Ter</p>
-                    </div>
-                    <div className='dashboard__graphic'>
-                              <div className='graphic__info' id="3"></div>
-                              <p>Qua</p>
-                    </div>
-                    <div className='dashboard__graphic'>
-                              <div className='graphic__info' id="4"></div>
-                              <p>Qui</p>
-                    </div>
-                    <div className='dashboard__graphic'>
-                              <div className='graphic__info' id="5"></div>
-                              <p>Sex</p>
-                    </div>
-                    <div className='dashboard__graphic'>
-                              <div className='graphic__info' id="6"></div>
-                              <p>Sab</p>
-                    </div>
+                    {days.map(( _day: string, index: number )  => {
+
+                         const ifTrue = index == day
+                         const color = ifTrue ? `hsl(186, 34%, 60%)` : `hsl(10, 79%, 65%)`
+
+                         return (
+<                             div className='dashboard__graphic' key={index}>
+                                   <div className='graphic__info' style={{ backgroundColor: color }}></div>
+                                   <p>{ _day }</p>
+                              </div>
+                         )
+                    })}
                </div>
                <hr />
                <p className='total__title'>Total este mês</p>
