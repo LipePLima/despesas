@@ -14,24 +14,39 @@ const Dashboard = ({ day }: DashboardProps) => {
           "Qui",
           "Sex",
           "Sab"
-     ]
+     ]   
 
-     
      return (
           <div className="body__dashboard">
                <p className='dashboard__title'>Gastos - Últimos 7 dias</p>
                <div className='dashboard__graphics'>
                     {days.map(( _day: string, index: number )  => {
-
                          const ifTrue = index == day
-                         const color = ifTrue ? `hsl(186, 34%, 60%)` : `hsl(10, 79%, 65%)`
+                         const color = ifTrue ? 'rgb(118, 181, 188)' : 'rgb(236, 119, 95)'
+
+                         const mouseOver = ( el: EventTarget & HTMLDivElement ): void => {
+                              if (el.style.backgroundColor != 'rgb(118, 181, 188)') {
+                                   el.style.backgroundColor = 'rgb(243, 169, 155)'
+                              } else {
+                                   el.style.backgroundColor = 'rgb(152 209 215)'
+                              }                              
+                         }
+
+                         const mouseOut = ( el: EventTarget & HTMLDivElement ): void => {
+                              el.style.backgroundColor = color                    
+                         }
 
                          return (
-<                             div className='dashboard__graphic' key={index}>
-                                   <div className='graphic__info' 
-                                   style={{ 
-                                        backgroundColor: color, 
-                                        height: `${api[index].amount}px`}}>
+                              <div className='dashboard__graphic' key={index}>
+                                   <div 
+                                        className='graphic__info' 
+                                        style={{ 
+                                             backgroundColor: color, 
+                                             height: `${api[index].height}px`
+                                        }}
+                                        onMouseOver={ e => mouseOver(e.currentTarget)}
+                                        onMouseOut ={ e => mouseOut(e.currentTarget)}
+                                   >
 
                                    </div>
                                    <p>{ _day }</p>

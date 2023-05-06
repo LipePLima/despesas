@@ -1,30 +1,37 @@
 [
   {
     "day": "Seg",
-    "amount": 50
+    "amount": 17.45,
+    "height": 50
   },
   {
     "day": "Ter",
-    "amount": 100
+    "amount": 34.91,
+    "height": 100
   },
   {
     "day": "Qua",
-    "amount": 150
+    "amount": 52.36,
+    "height": 150
   },
   {
     "day": "Qui",
-    "amount": 89
+    "amount": 31.07,
+    "height": 89
   },
   {
     "day": "Sex",
-    "amount": 67
+    "amount": 23.39,
+    "height": 67
   },
   {
     "day": "Sab",
-    "amount": 124
+    "amount": 43.28,
+    "height": 124
   },
   {
     "day": "Dom",
-    "amount": 73
+    "amount": 25.48,
+    "height": 73
   }
 ]
