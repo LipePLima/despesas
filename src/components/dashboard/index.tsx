@@ -17,7 +17,7 @@ const Dashboard = ({ day }: DashboardProps) => {
      ]   
 
      return (
-          <div className="body__dashboard">
+          <section className="body__dashboard">
                <p className='dashboard__title'>Gastos - Últimos 7 dias</p>
                <div className='dashboard__graphics'>
                     {days.map(( _day: string, index: number )  => {
@@ -29,15 +29,24 @@ const Dashboard = ({ day }: DashboardProps) => {
                                    el.style.backgroundColor = 'rgb(243, 169, 155)'
                               } else {
                                    el.style.backgroundColor = 'rgb(152 209 215)'
-                              }                              
+                              }     
+                              
+                              const elBro = el.parentNode?.childNodes[0] as HTMLDivElement;
+
+                              elBro.style.display = 'flex'
                          }
 
                          const mouseOut = ( el: EventTarget & HTMLDivElement ): void => {
-                              el.style.backgroundColor = color                    
+                              el.style.backgroundColor = color   
+                              
+                              const elBro = el.parentNode?.childNodes[0] as HTMLDivElement;
+
+                              elBro.style.display = 'none'
                          }
 
                          return (
                               <div className='dashboard__graphic' key={index}>
+                                   <div className="graphic__amount"><p>R${api[index].amount}</p></div>
                                    <div 
                                         className='graphic__info' 
                                         style={{ 
@@ -49,7 +58,7 @@ const Dashboard = ({ day }: DashboardProps) => {
                                    >
 
                                    </div>
-                                   <p>{ _day }</p>
+                                   <p className="graphic__text">{ _day }</p>
                               </div>
                          )
                     })}
@@ -63,7 +72,7 @@ const Dashboard = ({ day }: DashboardProps) => {
                               <p className='total__lastMonth'>Relação com o último mês</p>
                     </div>
                </div>
-          </div>
+          </section>
      )
 }
 

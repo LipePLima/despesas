@@ -2,7 +2,7 @@ import "./Balance.scss"
 
 const Balance = () => {
      return (
-          <div className="body__balance">
+          <section className="body__balance">
                <div className='balance__info'>
                     <h1>Meus saldo</h1>
                     <p>R$ 499,00</p>
@@ -11,7 +11,7 @@ const Balance = () => {
                     <div className='circles__circleBorder'></div>
                     <div className='circles__circleFull'></div>
                </div>
-          </div>
+          </section>
      )
 }
 

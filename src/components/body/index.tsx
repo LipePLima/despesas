@@ -6,10 +6,10 @@ const Body = () => {
       const date: number = new Date().getDay();
 
       return (
-            <section className="container__body">
+            <main className="container__body">
                   <Balance />
                   <Dashboard day={date}/>
-            </section>
+            </main>
       )
 }
 
