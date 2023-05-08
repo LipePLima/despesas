@@ -1,59 +1,89 @@
 @import url("../body/Body.scss");
 
-.body__balance {
-     display: flex;
-     flex-direction: row;
-     justify-content: space-between;
-     align-items: center;
+.container__balance {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
 
-     padding: 0 2rem;
-     width: 100%;
-     height: 7.813rem;
-     border-radius: 10px;
+      padding: 0 2rem;
+      width: 100%;
+      height: 7.813rem;
+      border-radius: 10px;
 
-     background-color: hsl(10, 79%, 65%);
-     color: #fff;
+      background-color: hsl(10, 79%, 65%);
+      color: #fff;
 
-     .balance__info {
-           h1 {
-                 font-weight: 500;
-                 margin-bottom: 1rem;
-           }
+      .balance__info {
+            display: flex;
+            align-items: end;
 
-           p {
-                 font-size: 32px;
-                 font-weight: 700;
-           }
-     }
+            h1 {
+                  font-weight: 500;
+                  margin-bottom: 1rem;
+            }
 
-     .balance__circles {
-           position: relative;
-           width: 4.5rem;
-           height: 100%;
+            .balance__balance {
+                  position: relative;
 
-           $circle__size: 3rem;
-           $circle__radius: 50%;
-           .circles__circleBorder {
-                 position: absolute;
-                 width: $circle__size;
-                 height: $circle__size;
-                 top: 39px;
-                 right: 42px;
-                 z-index: 1;
+                  p {
+                        font-size: 32px;
+                        font-weight: 700;
+                  }
 
-                 border-radius: $circle__radius;
-                 border: 1px solid #fff;
-           }
+                  input {
+                        position: absolute;
+                        top: 3px;
+                        right: 0;
 
-           .circles__circleFull {
-                 position: absolute;
-                 width: $circle__size;
-                 height: $circle__size;
-                 top: 39px;
-                 right: 22px;
+                        width: 70%;
+                        height: 28px;
+                        padding: 0;
+                        border: none;
+                        border-bottom: 1px solid #fff;
+                        outline: none;
 
-                 background-color: #000;
-                 border-radius: $circle__radius;
-           }
-     }
+                        background-color: hsl(10, 79%, 65%);
+
+                        font-size: 26px;
+                        color: #fff;
+                  }
+            }
+
+            .balance__icon {
+                  cursor: pointer;
+                  margin-left: 1rem;
+            }
+      }
+
+      .balance__circles {
+            position: relative;
+            width: 4.5rem;
+            height: 100%;
+
+            $circle__size: 3rem;
+            $circle__radius: 50%;
+            .circles__circleBorder {
+                  position: absolute;
+                  width: $circle__size;
+                  height: $circle__size;
+                  top: 39px;
+                  right: 42px;
+                  z-index: 1;
+
+                  border-radius: $circle__radius;
+                  border: 1px solid #fff;
+            }
+
+            .circles__circleFull {
+                  position: absolute;
+                  width: $circle__size;
+                  height: $circle__size;
+                  top: 39px;
+                  right: 22px;
+
+                  background-color: #000;
+                  border-radius: $circle__radius;
+            }
+      }
 }
