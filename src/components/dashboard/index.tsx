@@ -25,22 +25,21 @@ const Dashboard = ({ day }: DashboardProps) => {
                          const color = ifTrue ? 'rgb(118, 181, 188)' : 'rgb(236, 119, 95)'
 
                          const mouseOver = ( el: EventTarget & HTMLDivElement ): void => {
+                              const elBro = el.parentNode?.childNodes[0] as HTMLDivElement;
+
                               if (el.style.backgroundColor != 'rgb(118, 181, 188)') {
                                    el.style.backgroundColor = 'rgb(243, 169, 155)'
                               } else {
                                    el.style.backgroundColor = 'rgb(152 209 215)'
                               }     
-                              
-                              const elBro = el.parentNode?.childNodes[0] as HTMLDivElement;
 
                               elBro.style.display = 'flex'
                          }
 
                          const mouseOut = ( el: EventTarget & HTMLDivElement ): void => {
-                              el.style.backgroundColor = color   
-                              
                               const elBro = el.parentNode?.childNodes[0] as HTMLDivElement;
 
+                              el.style.backgroundColor = color   
                               elBro.style.display = 'none'
                          }
 
