@@ -28,7 +28,7 @@
   - [x] Alterar cor da barra refente ao dia atual;
   - [x] Diferentes alturas para cada dia de acordo com a configuração no arquivo JSON;
   - [x] Exibir gastos do dia com o passar do mouse sobre a coluna;
-  - [ ] Permitir alteração de valor do componente Balance;
+  - [x] Permitir alteração de valor do componente Balance;
   - [ ] Permitir alteração de valor do componente Dashboard;
   - [ ] Criar uma interface com total de gastos do dia;
 
