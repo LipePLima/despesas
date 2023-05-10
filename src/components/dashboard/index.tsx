@@ -16,6 +16,8 @@ const Dashboard = ({ day }: DashboardProps) => {
           "Sab"
      ]   
 
+     
+
      return (
           <section className="body__dashboard">
                <p className='dashboard__title'>Gastos - Últimos 7 dias</p>

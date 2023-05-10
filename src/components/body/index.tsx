@@ -1,5 +1,5 @@
 import Balance from '../balance';
-import Dashboard from '../dashboard'
+import FlipSwiper from '../swiper'
 import './Body.scss';
 
 const Body = () => {
@@ -8,7 +8,7 @@ const Body = () => {
       return (
             <main className="container__body">
                   <Balance />
-                  <Dashboard day={date}/>
+                  <FlipSwiper date={date}/>
             </main>
       )
 }

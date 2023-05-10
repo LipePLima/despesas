@@ -7,6 +7,7 @@ const Balance = () => {
           const input   = balance.childNodes[1] as HTMLInputElement;
 
           input.style.display = 'initial'
+          input.focus()
      }
 
      const changeBalance = ( e: HTMLInputElement ) => {
