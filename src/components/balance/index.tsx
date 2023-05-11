@@ -11,7 +11,7 @@ const Balance = () => {
      }
 
      const changeBalance = ( e: HTMLInputElement ) => {
-          let newNumber = e.value.replace(/\D/g, '');
+          let newNumber = e.value
           const balanceFinal = e.parentNode?.querySelector('p') as Element;
 
           if (newNumber.length > 0) {
