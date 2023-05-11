@@ -30,8 +30,8 @@
   - [x] Exibir gastos do dia com o passar do mouse sobre a coluna;
   - [x] Permitir alteração de valor do componente Balance;
   - [x] Inserir biblioteca Swiper no projeto;
-  - [ ] Alterar valor de gastos do mês de acordo com os gastos inseridos;
   - [ ] Criar uma interface com total de gastos do dia;
+  - [ ] Alterar valor de gastos do mês de acordo com os gastos inseridos;
 
 
 ## Tecnologias

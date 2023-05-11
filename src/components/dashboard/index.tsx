@@ -2,22 +2,11 @@ import "./Dashboard.scss"
 import api from "../../api/data.json"
 
 type DashboardProps = {
-     day: number
+     day: number,
+     days: string[]
 }
 
-const Dashboard = ({ day }: DashboardProps) => {
-     const days: string[] =  [
-          "Dom",
-          "Seg",
-          "Ter",
-          "Qua",
-          "Qui",
-          "Sex",
-          "Sab"
-     ]   
-
-     
-
+const Dashboard = ({ day, days }: DashboardProps) => {
      return (
           <section className="body__dashboard">
                <p className='dashboard__title'>Gastos - Últimos 7 dias</p>
