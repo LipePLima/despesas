@@ -31,14 +31,19 @@
           height: 297px;
           margin: 1rem 65px;
 
-          tr {
-               display: flex;
-               justify-content: space-between;
+          tbody {
                width: 100%;
-
-               color: #535353;
-               font-weight: 500;
+               
+               tr {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+     
+                    color: #535353;
+                    font-weight: 500;
+               }
           }
+
      }
 
      .days__days {

@@ -14,11 +14,11 @@ import { EffectFlip, Navigation } from "swiper";
 type SwiperProps = {
   dayOfWeek: number,
   days: string[]
-  date: number,
-  month: number
+  hour: number,
+  minutes: number
 }
 
-const FlipSwiper = ({ dayOfWeek, days, date, month }: SwiperProps) => {
+const FlipSwiper = ({ dayOfWeek, days, hour, minutes }: SwiperProps) => {
   return (
     <section className="container__swiper">
       <Swiper
@@ -38,8 +38,8 @@ const FlipSwiper = ({ dayOfWeek, days, date, month }: SwiperProps) => {
         <SwiperSlide className="slide">
           <Days 
             days={days}
-            date={date}
-            month={month}
+            hour={hour}
+            minutes={minutes}
           />
         </SwiperSlide>
       </Swiper>

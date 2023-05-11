@@ -1,5 +1,10 @@
 [
   {
+    "day": "Dom",
+    "amount": 25.48,
+    "height": 73
+  },
+  {
     "day": "Seg",
     "amount": 17.45,
     "height": 50
@@ -28,10 +33,5 @@
     "day": "Sab",
     "amount": 43.28,
     "height": 124
-  },
-  {
-    "day": "Dom",
-    "amount": 25.48,
-    "height": 73
   }
 ]

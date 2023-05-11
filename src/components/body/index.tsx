@@ -20,8 +20,8 @@ const Body = () => {
                   <FlipSwiper 
                         dayOfWeek={date.getDay()}
                         days={days}
-                        date={date.getDate()}
-                        month={date.getMonth()+1}
+                        hour={date.getHours()}
+                        minutes={date.getMinutes()}
                   />
             </main>
       )

@@ -31,7 +31,9 @@
   - [x] Permitir alteração de valor do componente Balance;
   - [x] Inserir biblioteca Swiper no projeto;
   - [x] Criar uma interface com total de gastos do dia;
-  - [ ] Permitir a inserção e alteração de valores e descrições na interface de gastos;
+  - [x] Criar inserção de valores e descrições na interface de gastos;
+  - [ ] Criar alteração de valores e descrições na interface de gastos;
+  - [ ] Armazenar os valores da interface de gastos na api;
   - [ ] Alterar valor de gastos do mês de acordo com os gastos inseridos na interface de gastos;
 
 
