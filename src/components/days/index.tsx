@@ -8,8 +8,25 @@ type DayProps = {
      minutes: number
 }
 
-const Days = ({ days, hour, minutes }: DayProps) => {
-     function newTime(data: number) {
+const Days = ({ api, days, hour, minutes }: DayProps) => {
+     function selectDay(clicked: HTMLButtonElement): void {
+          const content = clicked.textContent as string;
+
+          api.map( (e, i) => {
+               const brothers = clicked.parentElement?.children as HTMLCollection;
+
+               if (brothers[i].textContent != content) {
+                    brothers[i].classList.remove('button__active')
+               }
+
+               if(e.day == content) {
+                    clicked.classList.add('button__active')
+                    
+               }
+          })    
+     }
+
+     function newTime(data: number): string {
           let newData = data.toString()
      
           if(data < 10) {
@@ -24,15 +41,14 @@ const Days = ({ days, hour, minutes }: DayProps) => {
           return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
      }
 
-     function clear(element: HTMLInputElement) {
+     function clear(element: HTMLInputElement): void {
           element.value = ''
      }
 
-     const capture = (e: HTMLButtonElement) => {
+     function capture (e: HTMLButtonElement): void {
           const number = e.parentElement?.querySelector('#number') as HTMLInputElement;
           const text   = e.parentElement?.querySelector('#text') as HTMLInputElement;
           const value  = document.querySelector('#infoValue') as HTMLElement;
-          const desc   = document.querySelector('#infoDesc') as HTMLElement;
 
           const formattedNumber = parseFloat(number.value);
 
@@ -42,8 +58,10 @@ const Days = ({ days, hour, minutes }: DayProps) => {
                value.style.color = '#25FF01'
           }
 
-          value.innerHTML = formatToReal(formattedNumber);
-          desc.innerHTML  = text.value;
+          const newDrive = {
+               value: formatToReal(formattedNumber),
+               description: text.value
+          }
 
           clear(number);
           clear(text);
@@ -76,7 +94,7 @@ const Days = ({ days, hour, minutes }: DayProps) => {
                <div className='days__days'>
                     {days.map( (_value: string, index: number) => {
                          return(
-                              <button key={index}>
+                              <button key={index} onClick={e => selectDay(e.currentTarget)}>
                                    {_value}
                               </button>
                          )
