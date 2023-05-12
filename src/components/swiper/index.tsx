@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import Dashboard from "../dashboard";
 import Days from "../days";
+import api from "../../api/data.json"
 
 import "./Swiper.scss"
 import "swiper/css";
@@ -9,7 +10,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { EffectFlip, Navigation } from "swiper";
-
 
 type SwiperProps = {
   dayOfWeek: number,
@@ -31,12 +31,14 @@ const FlipSwiper = ({ dayOfWeek, days, hour, minutes }: SwiperProps) => {
       >
         <SwiperSlide className="slide">
           <Dashboard 
+            api={api}
             day={dayOfWeek} 
             days={days}
           />
         </SwiperSlide>
         <SwiperSlide className="slide">
           <Days 
+            api={api}
             days={days}
             hour={hour}
             minutes={minutes}

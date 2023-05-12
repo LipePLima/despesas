@@ -1,6 +1,8 @@
 import './Days.scss'
+import { ApiResponse } from "../../interface/api"
 
 type DayProps = {
+     api: ApiResponse[],
      days: string[],
      hour: number,
      minutes: number
@@ -36,7 +38,9 @@ const Days = ({ days, hour, minutes }: DayProps) => {
 
           if (formattedNumber < 0) {
                value.style.color = '#FF0000'
-          } 
+          } else {
+               value.style.color = '#25FF01'
+          }
 
           value.innerHTML = formatToReal(formattedNumber);
           desc.innerHTML  = text.value;

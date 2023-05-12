@@ -1,12 +1,13 @@
 import "./Dashboard.scss"
-import api from "../../api/data.json"
+import { ApiResponse } from "../../interface/api"
 
 type DashboardProps = {
+     api: ApiResponse[],
      day: number,
      days: string[]
 }
 
-const Dashboard = ({ day, days }: DashboardProps) => {
+const Dashboard = ({ api, day, days }: DashboardProps) => {
      return (
           <section className="body__dashboard">
                <p className='dashboard__title'>Gastos - Últimos 7 dias</p>
