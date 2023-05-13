@@ -1,5 +1,6 @@
 import './Days.scss'
 import { ApiResponse } from "../../interface/api"
+import { useRef } from 'react'
 
 type DayProps = {
      api: ApiResponse[],
@@ -12,18 +13,17 @@ const Days = ({ api, days, hour, minutes }: DayProps) => {
      function selectDay(clicked: HTMLButtonElement): void {
           const content = clicked.textContent as string;
 
-          api.map( (e, i) => {
+          api.map( (e: ApiResponse, i: number) => {
                const brothers = clicked.parentElement?.children as HTMLCollection;
 
                if (brothers[i].textContent != content) {
-                    brothers[i].classList.remove('button__active')
-               }
+                    brothers[i].classList.remove('button__active');
 
-               if(e.day == content) {
-                    clicked.classList.add('button__active')
-                    
+               } else if(e.day == content) {
+                    clicked.classList.add('button__active');
+
                }
-          })    
+          });    
      }
 
      function newTime(data: number): string {
@@ -53,19 +53,22 @@ const Days = ({ api, days, hour, minutes }: DayProps) => {
           const formattedNumber = parseFloat(number.value);
 
           if (formattedNumber < 0) {
-               value.style.color = '#FF0000'
+               value.style.color = '#FF0000';
           } else {
-               value.style.color = '#25FF01'
+               value.style.color = '#25FF01';
           }
 
           const newDrive = {
                value: formatToReal(formattedNumber),
-               description: text.value
-          }
+               description: text.value,
+               timetable: `${newTime(hour)}:${newTime(minutes)}`
+          };
 
           clear(number);
           clear(text);
      }
+
+     const myElementRef = useRef(null);  
           
      return (
           <section className='container__days'>
@@ -83,18 +86,22 @@ const Days = ({ api, days, hour, minutes }: DayProps) => {
                <hr />
                <table className="days__costs">
                     <tbody>
-                         <tr>
-                              <td id='infoValue'>{}</td>
-                              <td id='infoDesc'>Descrição do gastos e ganhos 1</td>
-                              <td>{newTime(hour)}:{newTime(minutes)}</td>
-                         </tr>
+                         {api.map( (e: ApiResponse, i: number) => {                 
+                              return (
+                                   <tr key={i}>
+                                        <td id='infoValue'>{}</td>
+                                        <td id='infoDesc'>Descrição do gastos e ganhos 1</td>
+                                        <td>{newTime(hour)}:{newTime(minutes)}</td>
+                                   </tr>
+                              )
+                         })}
                     </tbody>
                </table>
                <hr />
                <div className='days__days'>
                     {days.map( (_value: string, index: number) => {
                          return(
-                              <button key={index} onClick={e => selectDay(e.currentTarget)}>
+                              <button ref={myElementRef} key={index} id={_value} onClick={e => selectDay(e.currentTarget)}>
                                    {_value}
                               </button>
                          )
