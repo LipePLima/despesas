@@ -1,6 +1,5 @@
 import './Days.scss'
 import { ApiResponse } from "../../interface/api"
-import { useRef } from 'react'
 
 type DayProps = {
      api: ApiResponse[],
@@ -12,6 +11,7 @@ type DayProps = {
 const Days = ({ api, days, hour, minutes }: DayProps) => {
      function selectDay(clicked: HTMLButtonElement): void {
           const content = clicked.textContent as string;
+          const section = clicked.parentElement?.parentElement
 
           api.map( (e: ApiResponse, i: number) => {
                const brothers = clicked.parentElement?.children as HTMLCollection;
@@ -48,15 +48,8 @@ const Days = ({ api, days, hour, minutes }: DayProps) => {
      function capture (e: HTMLButtonElement): void {
           const number = e.parentElement?.querySelector('#number') as HTMLInputElement;
           const text   = e.parentElement?.querySelector('#text') as HTMLInputElement;
-          const value  = document.querySelector('#infoValue') as HTMLElement;
 
           const formattedNumber = parseFloat(number.value);
-
-          if (formattedNumber < 0) {
-               value.style.color = '#FF0000';
-          } else {
-               value.style.color = '#25FF01';
-          }
 
           const newDrive = {
                value: formatToReal(formattedNumber),
@@ -64,12 +57,16 @@ const Days = ({ api, days, hour, minutes }: DayProps) => {
                timetable: `${newTime(hour)}:${newTime(minutes)}`
           };
 
+          const updatedJsonData = api.map((item) => ({
+               ...item,
+               costs: [...item.costs, newDrive]
+          }));
+          api[0].costs.push(newDrive)
+          
           clear(number);
           clear(text);
-     }
-
-     const myElementRef = useRef(null);  
-          
+     }         
+         
      return (
           <section className='container__days'>
                <div className="days__information">
@@ -86,12 +83,21 @@ const Days = ({ api, days, hour, minutes }: DayProps) => {
                <hr />
                <table className="days__costs">
                     <tbody>
-                         {api.map( (e: ApiResponse, i: number) => {                 
+                         {api[0].costs.map( (e, i: number) => {  
+                              const number = parseFloat(e.value.replace("R$", "").replace(",", "."))
+                              let color
+
+                              if (number < 0) {
+                                   color = '#FF0000';
+                              } else {
+                                   color = '#25FF01';
+                              }
+
                               return (
                                    <tr key={i}>
-                                        <td id='infoValue'>{}</td>
-                                        <td id='infoDesc'>Descrição do gastos e ganhos 1</td>
-                                        <td>{newTime(hour)}:{newTime(minutes)}</td>
+                                        <td id='infoValue' style={{color: color}}>{e.value}</td>
+                                        <td id='infoDesc'>{e.description}</td>
+                                        <td>{e.timetable}</td>
                                    </tr>
                               )
                          })}
@@ -101,7 +107,14 @@ const Days = ({ api, days, hour, minutes }: DayProps) => {
                <div className='days__days'>
                     {days.map( (_value: string, index: number) => {
                          return(
-                              <button ref={myElementRef} key={index} id={_value} onClick={e => selectDay(e.currentTarget)}>
+                              <button 
+                                   key={index} 
+                                   id={_value} 
+                                   className={_value} 
+                                   onClick={e => 
+                                        selectDay(e.currentTarget)
+                                   }
+                              >
                                    {_value}
                               </button>
                          )
