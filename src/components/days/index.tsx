@@ -1,29 +1,46 @@
 import './Days.scss'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { ApiResponse } from "../../interface/api"
 
 type DayProps = {
-     api: ApiResponse[],
      days: string[],
      hour: number,
      minutes: number
 }
 
-const Days = ({ api, days, hour, minutes }: DayProps) => {
+const Days = ({ days, hour, minutes }: DayProps) => {
+     const [data, setData] = useState<ApiResponse[] | null>(null);
+
+     useEffect(() => {
+          const fetchData = async () => {
+            try {
+              const response = await axios.get('/public/api/data.json');
+              setData(response.data);
+            } catch (error) {
+              console.error('Erro ao buscar os dados da API:', error);
+            }
+          };
+      
+          fetchData();
+     }, []);
+
      function selectDay(clicked: HTMLButtonElement): void {
           const content = clicked.textContent as string;
           const section = clicked.parentElement?.parentElement
 
-          api.map( (e: ApiResponse, i: number) => {
-               const brothers = clicked.parentElement?.children as HTMLCollection;
-
-               if (brothers[i].textContent != content) {
-                    brothers[i].classList.remove('button__active');
-
-               } else if(e.day == content) {
-                    clicked.classList.add('button__active');
-
-               }
-          });    
+          if (data != null) {
+               console.log(data);
+               data.map((e: ApiResponse, i: number) => {
+                    const brothers = clicked.parentElement?.children as HTMLCollection;
+               
+                    if (brothers[i].textContent != content) {
+                         brothers[i].classList.remove('button__active');
+                    } else if (e.day == content) {
+                         clicked.classList.add('button__active');
+                    }
+               });
+          }
      }
 
      function newTime(data: number): string {
@@ -57,12 +74,15 @@ const Days = ({ api, days, hour, minutes }: DayProps) => {
                timetable: `${newTime(hour)}:${newTime(minutes)}`
           };
 
-          const updatedJsonData = api.map((item) => ({
-               ...item,
-               costs: [...item.costs, newDrive]
-          }));
-          api[0].costs.push(newDrive)
+          if(data != null) {
+               const updatedJsonData = data.map((item) => ({
+                    ...item,
+                    costs: [...item.costs, newDrive]
+               }));
+               
+          }
           
+          console.log(newDrive)
           clear(number);
           clear(text);
      }         
@@ -82,25 +102,37 @@ const Days = ({ api, days, hour, minutes }: DayProps) => {
                </div>
                <hr />
                <table className="days__costs">
-                    <tbody>
-                         {api[0].costs.map( (e, i: number) => {  
-                              const number = parseFloat(e.value.replace("R$", "").replace(",", "."))
-                              let color
+                    <tbody key={12345}>
+                         {data ? (
+                              data[0].costs.map( (e, i: number) => {  
+                                   const number = parseFloat(
+                                        e.value
+                                        .replace(/R\$\s?/, "")
+                                        .replace(".", "")
+                                        .replace(",", ".")
+                                        .trim()
+                                   );
+                              
+                                   console.log(number)
+                                   let color
 
-                              if (number < 0) {
-                                   color = '#FF0000';
-                              } else {
-                                   color = '#25FF01';
-                              }
+                                   if (number < 0) {
+                                        color = '#FF0000';
+                                   } else if (number > 0) {
+                                        color = '#25FF01';
+                                   }
 
-                              return (
-                                   <tr key={i}>
-                                        <td id='infoValue' style={{color: color}}>{e.value}</td>
-                                        <td id='infoDesc'>{e.description}</td>
-                                        <td>{e.timetable}</td>
-                                   </tr>
-                              )
-                         })}
+                                   return (
+                                        <tr>
+                                             <td id='infoValue' style={{color: color}}>{e.value}</td>
+                                             <td id='infoDesc'>{e.description}</td>
+                                             <td>{e.timetable}</td>
+                                        </tr>
+                                   )
+                              })
+                         ) : (
+                              <tr><td>Carregando dados...</td></tr>     
+                         )}
                     </tbody>
                </table>
                <hr />

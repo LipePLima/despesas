@@ -1,13 +1,29 @@
 import "./Dashboard.scss"
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { ApiResponse } from "../../interface/api"
 
 type DashboardProps = {
-     api: ApiResponse[],
      day: number,
      days: string[]
 }
 
-const Dashboard = ({ api, day, days }: DashboardProps) => {
+const Dashboard = ({ day, days }: DashboardProps) => {
+     const [data, setData] = useState<ApiResponse[] | null>(null);
+
+     useEffect(() => {
+          const fetchData = async () => {
+            try {
+              const response = await axios.get('/public/api/data.json');
+              setData(response.data);
+            } catch (error) {
+              console.error('Erro ao buscar os dados da API:', error);
+            }
+          };
+      
+          fetchData();
+     }, []);
+
      return (
           <section className="body__dashboard">
                <p className='dashboard__title'>Gastos - Últimos 7 dias</p>
@@ -37,18 +53,23 @@ const Dashboard = ({ api, day, days }: DashboardProps) => {
 
                          return (
                               <div className='dashboard__graphic' key={index}>
-                                   <div className="graphic__amount"><p>R${api[index].amount}</p></div>
-                                   <div 
-                                        className='graphic__info' 
-                                        style={{ 
-                                             backgroundColor: color, 
-                                             height: `${api[index].height}px`
-                                        }}
-                                        onMouseOver={ e => mouseOver(e.currentTarget)}
-                                        onMouseOut ={ e => mouseOut(e.currentTarget)}
-                                   >
-
-                                   </div>
+                                   {data ? (
+                                        <><div className="graphic__amount">
+                                             <p>R${data[index].amount}</p>
+                                        </div><div
+                                             className='graphic__info'
+                                             style={{
+                                                  backgroundColor: color,
+                                                  height: `${data[index].height}px`
+                                             }}
+                                             onMouseOver={e => mouseOver(e.currentTarget)}
+                                             onMouseOut={e => mouseOut(e.currentTarget)}
+                                        >
+                                        </div>
+                                        </>
+                                   ) : (
+                                        <p>Carregando dados...</p>
+                                   )}
                                    <p className="graphic__text">{ _day }</p>
                               </div>
                          )
