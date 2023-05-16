@@ -1,6 +1,7 @@
-import './Days.scss'
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+import './Days.scss'
 import { ApiResponse } from "../../interface/api"
 
 type DayProps = {
@@ -62,27 +63,28 @@ const Days = ({ days, hour, minutes }: DayProps) => {
           element.value = ''
      }
 
-     function capture (e: HTMLButtonElement): void {
+     const capture = async (e: HTMLButtonElement) => {
           const number = e.parentElement?.querySelector('#number') as HTMLInputElement;
           const text   = e.parentElement?.querySelector('#text') as HTMLInputElement;
 
           const formattedNumber = parseFloat(number.value);
 
-          const newDrive = {
+          const newData = {
                value: formatToReal(formattedNumber),
                description: text.value,
                timetable: `${newTime(hour)}:${newTime(minutes)}`
           };
 
-          if(data != null) {
-               const updatedJsonData = data.map((item) => ({
-                    ...item,
-                    costs: [...item.costs, newDrive]
-               }));
-               
+          try {
+               const updatedData = data ? [...data] : []; 
+               updatedData[0].costs.push(newData);
+               setData(updatedData);
+
+          } catch (error) {
+               console.error('Erro ao inserir os dados:', error);
+
           }
-          
-          console.log(newDrive)
+               
           clear(number);
           clear(text);
      }         
@@ -102,7 +104,7 @@ const Days = ({ days, hour, minutes }: DayProps) => {
                </div>
                <hr />
                <table className="days__costs">
-                    <tbody key={12345}>
+                    <tbody>
                          {data ? (
                               data[0].costs.map( (e, i: number) => {  
                                    const number = parseFloat(
@@ -112,8 +114,7 @@ const Days = ({ days, hour, minutes }: DayProps) => {
                                         .replace(",", ".")
                                         .trim()
                                    );
-                              
-                                   console.log(number)
+
                                    let color
 
                                    if (number < 0) {
@@ -123,7 +124,7 @@ const Days = ({ days, hour, minutes }: DayProps) => {
                                    }
 
                                    return (
-                                        <tr>
+                                        <tr key={uuidv4()}>
                                              <td id='infoValue' style={{color: color}}>{e.value}</td>
                                              <td id='infoDesc'>{e.description}</td>
                                              <td>{e.timetable}</td>
@@ -137,10 +138,10 @@ const Days = ({ days, hour, minutes }: DayProps) => {
                </table>
                <hr />
                <div className='days__days'>
-                    {days.map( (_value: string, index: number) => {
+                    {days.map( (_value: string) => {
                          return(
                               <button 
-                                   key={index} 
+                                   key={uuidv4()} 
                                    id={_value} 
                                    className={_value} 
                                    onClick={e => 

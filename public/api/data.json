@@ -3,11 +3,7 @@
     "day": "Dom",
     "amount": 25.48,
     "height": 73,
-    "costs": [{
-      "value": "R$ 135,20",
-      "description": "Pix",
-      "timetable": "18:35"
-    }]
+    "costs": []
   },
   {
     "day": "Seg",
