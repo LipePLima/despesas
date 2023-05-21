@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import './Days.scss'
@@ -28,7 +28,7 @@ const Days = ({ days, hour, minutes }: DayProps) => {
 
      function selectDay(clicked: HTMLButtonElement): void {
           const content = clicked.textContent as string;
-          const section = clicked.parentElement?.parentElement
+          // const section = clicked.parentElement?.parentElement
 
           if (data != null) {
                console.log(data);
@@ -106,7 +106,7 @@ const Days = ({ days, hour, minutes }: DayProps) => {
                <table className="days__costs">
                     <tbody>
                          {data ? (
-                              data[0].costs.map( (e, i: number) => {  
+                              data[0].costs.map( (e) => {  
                                    const number = parseFloat(
                                         e.value
                                         .replace(/R\$\s?/, "")

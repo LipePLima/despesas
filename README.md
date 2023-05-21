@@ -33,7 +33,7 @@
   - [x] Criar uma interface com total de gastos do dia;
   - [x] Criar inserção de valores e descrições na interface de gastos;
   - [ ] Criar alteração de valores e descrições na interface de gastos;
-  - [ ] Armazenar os valores da interface de gastos na api;
+  - [x] Armazenar os valores da interface de gastos na api;
   - [ ] Alterar valor de gastos do mês de acordo com os gastos inseridos na interface de gastos;
   - [ ] Validar entrada de nova movimentação dentro do componente Days;
 
