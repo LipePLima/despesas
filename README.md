@@ -13,7 +13,15 @@
 
 ## Descrição 
 
+O projeto "Despesas" é uma aplicação web de controle financeiro. Seu objetivo é fornecer uma solução simples e eficiente para o gerenciamento das despesas pessoais.
 
+Principais características e funcionalidades:
+
+Registro de Despesas: Os usuários podem cadastrar suas despesas, inserindo informações como descrição, e valor.
+
+Estatísticas e Gráficos: A aplicação fornece informações estatísticas sobre as despesas, como total gasto. Os dados são apresentados em gráficos intuitivos para facilitar a análise.
+
+Edição e Exclusão(Em Andamento): Os usuários terá a capacidade de editar ou excluir despesas registradas, permitindo ajustes ou remoção de registros incorretos.
 
 ## Etapas
 
